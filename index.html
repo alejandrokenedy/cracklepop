@@ -45,7 +45,10 @@ d3.tsv("data.tsv", type, function(error, data) {
             if (d.value === "Crackle") {return "gold"}
             if (d.value === "Pop") {return "violet"}
             if (d.value === "CracklePop") {return "springgreen"}
-            ;});
+            ;})
+        .on("click", function(d) {
+            console.log ("number:" + d.number + "value:" + d.value)
+            });
 
     bar.append("text")
         .attr("x", function(d) { return x(d.number) - 3; })
