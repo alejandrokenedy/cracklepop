@@ -7,11 +7,15 @@
 .chart rect {
     fill: Paleturquoise;}
 
+/*
+    .chart rect:hover {
+    fill: brown;}    
+    */
 .chart text {
     fill: white;
     font: 10px sans-serif;
     text-anchor: end;}
-
+    
 </style>
 
 <svg class="chart"></svg>
@@ -48,8 +52,15 @@ d3.tsv("data.tsv", type, function(error, data) {
             ;})
         .on("click", function(d) {
             console.log ("number:" + d.number + "value:" + d.value)
+            })
+    .on("mouseover", function(d) {
+            console.log ("number:" + d.number + "value:" + d.value)
+            })
+    .on("mouseover", function() {
+            d3.select(this)
+            .style("fill", "orange")
             });
-
+                       
     bar.append("text")
         .attr("x", function(d) { return x(d.number) - 3; })
         .attr("y", barHeight / 2)
