@@ -7,10 +7,6 @@
 .chart rect {
     fill: Paleturquoise;}
 
-/*
-    .chart rect:hover {
-    fill: brown;}    
-    */
 .chart text {
     fill: white;
     font: 10px sans-serif;
@@ -58,7 +54,18 @@ d3.tsv("data.tsv", type, function(error, data) {
             })
     .on("mouseover", function() {
             d3.select(this)
-            .style("fill", "orange")
+            .style("fill", "black")
+            .attr("width", width)
+            })
+    .on("mouseout", function(d) {
+            d3.select(this)
+            .style("fill", "Paleturquoise")
+            .style("fill", function(d) {
+            if (d.value === "Crackle") {return "gold"}
+            if (d.value === "Pop") {return "violet"}
+            if (d.value === "CracklePop") {return "springgreen"}
+            ;})
+            .attr("width", function(d) { return x(d.number); })
             });
                        
     bar.append("text")
